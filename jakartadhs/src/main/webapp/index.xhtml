@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">>
     <h:head>
         <title>ITESS JPA</title>
     </h:head>
@@ -11,34 +13,41 @@
             <h:messages/>
             <h:panelGrid columns="2"
                          columnClasses="rightAlign,leftAlign">
-            <h:outputLabel for="firstName" value="First Name:">
-            </h:outputLabel>
-            <h:inputText id="firstName"
-                         label="First Name"
-                         value="#{student.firstName}"
-                         required="true">
-                         validator="#{alphaValidator.validateAlpha}">
-            </h:inputText>
-            <h:outputLabel for="lastName" 
-                           value="Last Name:">
-            </h:outputLabel>
-            <h:inputText id="lastName"
-                         label="Last Name"
-                         value="#{student.lastName}"
-                         required="true">
-                         validator="#{alphaValidator.validateAlpha}">
-            </h:inputText>
-            <h:outputLabel 
-                         for="email" value="Email:">
-            </h:outputLabel>
-            <h:inputText id="email"
-                        label="Email"
-                        value="#{student.email}">
-            </h:inputText>
-            <h:panelGroup></h:panelGroup>
-            <h:commandButton action="information" value="Save">
-            </h:commandButton>
+                <h:outputLabel for="firstName" value="First Name:">
+                </h:outputLabel>
+                <h:inputText id="firstName"
+                             label="First Name"
+                             pt:placeholder = "Diego"
+                             value="#{student.firstName}"
+                             required="true">
+                    validator="#{alphaValidator.validateAlpha}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                <h:outputLabel for="lastName" 
+                               value="Last Name:">
+                </h:outputLabel>
+                <h:inputText id="lastName"
+                             label="Last Name"
+                             pt:placeholder = "Hernandez"
+                             value="#{student.lastName}"
+                             required="true">
+                    validator="#{alphaValidator.validateAlpha}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                <h:outputLabel 
+                    for="email" value="Email:">
+                </h:outputLabel>
+                <h:inputText id="email"
+                             label="Email"
+                             pt:placeholder = "samanodiego888gmail.com"
+                             value="#{student.email}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                    <f:validator validatorId="emailValidator" />
+                </h:inputText>
+                <h:panelGroup></h:panelGroup>
+                <h:commandButton action="information" value="Save">
+                </h:commandButton>
             </h:panelGrid>        
-</h:form>    
-</h:body>
+        </h:form>    
+    </h:body>
 </html>
