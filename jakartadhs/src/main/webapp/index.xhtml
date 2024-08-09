@@ -9,6 +9,13 @@
     </h:head>
     <h:body>
         <h1> Hello from Facelets ITESS JPA</h1>
+        <h2>Get student List</h2>
+        <h:form id="studentFormList">
+            <h:commandLink value="Get student list" 
+                           action="#studentController.getStudents()}" />
+        </h:form>
+        
+        <h2>Add student form</h2>
         <h:form id="studentForm">
             <h:messages/>
             <h:panelGrid columns="2"
@@ -18,7 +25,7 @@
                 <h:inputText id="firstName"
                              label="First Name"
                              pt:placeholder = "Diego"
-                             value="#{student.firstName}"
+                             value="#{studentController.student.firstName}"
                              required="true">
                     validator="#{alphaValidator.validateAlpha}">
                     <f:validateLength minimum="3" maximum="30"/>
@@ -29,7 +36,7 @@
                 <h:inputText id="lastName"
                              label="Last Name"
                              pt:placeholder = "Hernandez"
-                             value="#{student.lastName}"
+                             value="#{studentController.student.lastName}"
                              required="true">
                     validator="#{alphaValidator.validateAlpha}">
                     <f:validateLength minimum="3" maximum="30"/>
@@ -40,12 +47,12 @@
                 <h:inputText id="email"
                              label="Email"
                              pt:placeholder = "samanodiego888gmail.com"
-                             value="#{student.email}">
+                             value="#{studentController.student.email}">
                     <f:validateLength minimum="3" maximum="30"/>
                     <f:validator validatorId="emailValidator" />
                 </h:inputText>
                 <h:panelGroup></h:panelGroup>
-                <h:commandButton action="information" value="Save">
+                <h:commandButton action="#StudentController.saveStudent()}" value="Save">
                 </h:commandButton>
             </h:panelGrid>        
         </h:form>    
